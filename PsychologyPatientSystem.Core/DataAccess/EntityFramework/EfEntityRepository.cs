@@ -11,7 +11,7 @@ namespace PsychologyPatientSystem.Core.DataAccess.EntityFramework
   public  class EfEntityRepository<TEntity,TContext>:IEntityRepository<TEntity> where TEntity:class,IEntity,new()
   where TContext:DbContext,new()
     {
-        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        public IList<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var context = new TContext())
             {
@@ -44,7 +44,7 @@ namespace PsychologyPatientSystem.Core.DataAccess.EntityFramework
             using (var context = new TContext())
             {
                 var updatedState = context.Entry(entity);
-                updatedState.State = EntityState.Added;
+                updatedState.State = EntityState.Modified;
                 context.SaveChanges();
             }
         }
@@ -54,7 +54,7 @@ namespace PsychologyPatientSystem.Core.DataAccess.EntityFramework
             using (var context = new TContext())
             {
                 var deletedState = context.Entry(entity);
-                deletedState.State = EntityState.Added;
+                deletedState.State = EntityState.Deleted;
                 context.SaveChanges();
             }
         }

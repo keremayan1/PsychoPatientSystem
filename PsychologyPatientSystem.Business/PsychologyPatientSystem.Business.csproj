@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PsychologyPatientSystem.Core\PsychologyPatientSystem.Core.csproj" />
+    <ProjectReference Include="..\PsychologyPatientSystem.DataAccess\PsychologyPatientSystem.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

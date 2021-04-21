@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PsychologyPatientSystem.Core.Utilities.Result
+namespace PsychologyPatientSystem.Core.Utilities.Results
 {
    public class ErrorDataResult<T>:DataResult<T>
     {
@@ -14,14 +14,14 @@ namespace PsychologyPatientSystem.Core.Utilities.Result
         {
         }
 
-        public ErrorDataResult(string message):base(default,false,message)
+        public ErrorDataResult(string message) : base(default, false, message)
         {
-            
+
         }
 
-        public ErrorDataResult():base(default,false)
+        public ErrorDataResult() : base(default, false)
         {
-            
+
         }
     }
 }

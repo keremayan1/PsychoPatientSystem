@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PsychologyPatientSystem.Core.Utilities.Result
+namespace PsychologyPatientSystem.Core.Utilities.Results
 {
   public  interface IResult
     {

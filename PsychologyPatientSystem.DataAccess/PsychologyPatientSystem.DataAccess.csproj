@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstract\" />
-    <Folder Include="Concrete\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
+    <ProjectReference Include="..\PsychologyPatientSystem.Core\PsychologyPatientSystem.Core.csproj" />
+    <ProjectReference Include="..\PsychologyPatientSystem.Entities\PsychologyPatientSystem.Entities.csproj" />
   </ItemGroup>
 
 </Project>
