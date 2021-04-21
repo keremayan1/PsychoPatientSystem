@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychologyPatientSystem.DataAccess", "PsychologyPatientSystem.DataAccess\PsychologyPatientSystem.DataAccess.csproj", "{67BD9849-6263-4EFF-8C9F-E2ECA81E6B9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychologyPatientSystem.Business", "PsychologyPatientSystem.Business\PsychologyPatientSystem.Business.csproj", "{F70E1BBE-90D9-4F6B-BE5B-A9364247B8D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychologyPatientSystem.Core", "PsychologyPatientSystem.Core\PsychologyPatientSystem.Core.csproj", "{BE3F6766-796E-434F-BB5F-2745320EA6F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychologyPatientSystem.Entities", "PsychologyPatientSystem.Entities\PsychologyPatientSystem.Entities.csproj", "{DB316428-9F69-4FDB-B97E-1516ED1E6AA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsychologyPatientSystem.WebAPI", "PsychologyPatientSystem.WebAPI\PsychologyPatientSystem.WebAPI.csproj", "{ED9ED7FD-7438-462E-8575-90D1CDF58A17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67BD9849-6263-4EFF-8C9F-E2ECA81E6B9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67BD9849-6263-4EFF-8C9F-E2ECA81E6B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67BD9849-6263-4EFF-8C9F-E2ECA81E6B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67BD9849-6263-4EFF-8C9F-E2ECA81E6B9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F70E1BBE-90D9-4F6B-BE5B-A9364247B8D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F70E1BBE-90D9-4F6B-BE5B-A9364247B8D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F70E1BBE-90D9-4F6B-BE5B-A9364247B8D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F70E1BBE-90D9-4F6B-BE5B-A9364247B8D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE3F6766-796E-434F-BB5F-2745320EA6F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE3F6766-796E-434F-BB5F-2745320EA6F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE3F6766-796E-434F-BB5F-2745320EA6F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE3F6766-796E-434F-BB5F-2745320EA6F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB316428-9F69-4FDB-B97E-1516ED1E6AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB316428-9F69-4FDB-B97E-1516ED1E6AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB316428-9F69-4FDB-B97E-1516ED1E6AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB316428-9F69-4FDB-B97E-1516ED1E6AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED9ED7FD-7438-462E-8575-90D1CDF58A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9ED7FD-7438-462E-8575-90D1CDF58A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED9ED7FD-7438-462E-8575-90D1CDF58A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED9ED7FD-7438-462E-8575-90D1CDF58A17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A51987EC-8BF4-4C68-87B1-DC33A5DF6488}
+	EndGlobalSection
+EndGlobal
