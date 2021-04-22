@@ -30,8 +30,8 @@ namespace PsychologyPatientSystem.Business.Concrete
 
         public IDataResult<User> GetByMail(string email)
         {
-            _userDal.Get(u => u.Email == email);
-            return new SuccessDataResult<User>();
+            
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email));
         }
 
         public IResult Add(User user)

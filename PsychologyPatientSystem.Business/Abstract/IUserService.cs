@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using PsychologyPatientSystem.Core.Entities.Concrete;
-
 using PsychologyPatientSystem.Core.Utilities.Results;
 
 namespace PsychologyPatientSystem.Business.Abstract

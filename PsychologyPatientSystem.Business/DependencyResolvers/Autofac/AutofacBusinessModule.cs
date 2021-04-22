@@ -8,6 +8,7 @@ using Castle.DynamicProxy;
 using PsychologyPatientSystem.Business.Abstract;
 using PsychologyPatientSystem.Business.Concrete;
 using PsychologyPatientSystem.Core.Utilities.Interceptors;
+using PsychologyPatientSystem.Core.Utilities.Security.Jwt;
 using PsychologyPatientSystem.DataAccess.Abstract;
 using PsychologyPatientSystem.DataAccess.Concrete.EntityFramework;
 using PsychologyPatientSystem.DataAccess.Concrete.EntityFramework.MSSQL;
@@ -21,6 +22,12 @@ namespace PsychologyPatientSystem.Business.DependencyResolvers.Autofac
         {
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+
+
             builder.RegisterType<PatientManager>().As<IPatientService>().SingleInstance();
             builder.RegisterType<EfPatientDal>().As<IPatientDal>().SingleInstance();
 

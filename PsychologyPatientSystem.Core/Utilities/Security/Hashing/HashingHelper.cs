@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PsychologyPatientSystem.Core.Utilities.Security.Hashing
 {
-  public  static class HashingHelper
+  public   class HashingHelper
     {
         public static void CreatePasswordHash(string password, out byte[] passwordSalt, out byte[] passwordHash)
         {

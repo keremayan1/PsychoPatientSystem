@@ -14,7 +14,7 @@ namespace PsychologyPatientSystem.Core.Utilities.Security.Jwt
 {
     public class JwtHelper : ITokenHelper
     {
-        public IConfiguration Configuration { get; set; }
+        public IConfiguration Configuration { get;}
         private TokenOptions _tokenOptions;
         private DateTime _accessTokenExpiration;
 
@@ -42,22 +42,22 @@ namespace PsychologyPatientSystem.Core.Utilities.Security.Jwt
         private JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user, SigningCredentials signingCredentials, List<OperationClaim> operationClaims)
         {
             var jwt = new JwtSecurityToken(
-                issuer: _tokenOptions.Issuer,
-                audience: _tokenOptions.Audince,
-                claims: SetClaims(user, operationClaims),
-                notBefore: DateTime.Now,
+                issuer: tokenOptions.Issuer,
+                audience: tokenOptions.Audience,
                 expires: _accessTokenExpiration,
+                notBefore: DateTime.Today,
+                claims: SetClaims(user, operationClaims),
                 signingCredentials: signingCredentials
             );
             return jwt;
         }
 
-        private List<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
+        private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
         {
             var claims = new List<Claim>();
             claims.AddNameIdentifier(user.Id.ToString());
             claims.AddEmail(user.Email);
-            claims.AddName($"{user.FirstName} {user.LastName}");
+            claims.AddName($"{user.FirstName}  {user.LastName}");
             claims.AddRoles(operationClaims.Select(x=>x.Name).ToArray());
             return claims;
 

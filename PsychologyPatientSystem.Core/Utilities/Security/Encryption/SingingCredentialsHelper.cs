@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PsychologyPatientSystem.Core.Utilities.Security.Encryption
 {
-   public static class SingingCredentialsHelper
+   public  class SingingCredentialsHelper
     {
         public static SigningCredentials CreateSigningCredentials(SecurityKey securityKey)
         {

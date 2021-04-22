@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Text;
 using PsychologyPatientSystem.Business.Abstract;
@@ -26,7 +26,7 @@ namespace PsychologyPatientSystem.Business.Concrete
         {
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            var user = new User()
+            var user = new User
             {
                 Email = userForRegisterDto.Email,
                 FirstName = userForRegisterDto.FirstName,
@@ -58,9 +58,10 @@ namespace PsychologyPatientSystem.Business.Concrete
 
         public IResult UserExits(string email)
         {
-            if (_userService.GetByMail(email) != null)
+
+            if (_userService.GetByMail(email)!=null)
             {
-                return new ErrorResult(Messages.UserAlreadyExits);
+                return new ErrorResult("sdaasdf");
             }
 
             return new SuccessResult();

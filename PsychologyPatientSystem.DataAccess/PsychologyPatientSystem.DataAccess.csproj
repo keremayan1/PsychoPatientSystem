@@ -13,4 +13,8 @@
     <ProjectReference Include="..\PsychologyPatientSystem.Entities\PsychologyPatientSystem.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Concrete\EntityFramework\SQLLite\" />
+  </ItemGroup>
+
 </Project>
