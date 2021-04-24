@@ -11,7 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
+using PsychologyPatientSystem.Core.Utilities.IoC;
 using PsychologyPatientSystem.Core.Utilities.Security.Encryption;
 using PsychologyPatientSystem.Core.Utilities.Security.Jwt;
 
@@ -31,7 +33,8 @@ namespace PsychologyPatientSystem.WebAPI
         {
             services.AddControllers();
             services.AddCors();
-            
+
+           
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -48,6 +51,7 @@ namespace PsychologyPatientSystem.WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
