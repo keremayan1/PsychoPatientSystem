@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PsychologyPatientSystem.Core.Utilities.Results
+﻿namespace PsychologyPatientSystem.Core.Utilities.Results
 {
    public class Result:IResult
     {

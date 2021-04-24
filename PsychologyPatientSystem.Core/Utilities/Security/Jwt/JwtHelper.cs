@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using PsychologyPatientSystem.Core.Entities.Concrete;
 using PsychologyPatientSystem.Core.Extensions;
 using PsychologyPatientSystem.Core.Utilities.Security.Encryption;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace PsychologyPatientSystem.Core.Utilities.Security.Jwt
 {
@@ -45,7 +44,7 @@ namespace PsychologyPatientSystem.Core.Utilities.Security.Jwt
                 issuer: tokenOptions.Issuer,
                 audience: tokenOptions.Audience,
                 expires: _accessTokenExpiration,
-                notBefore: DateTime.Today,
+                notBefore: DateTime.Now,
                 claims: SetClaims(user, operationClaims),
                 signingCredentials: signingCredentials
             );

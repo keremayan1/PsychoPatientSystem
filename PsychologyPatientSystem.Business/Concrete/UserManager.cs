@@ -22,16 +22,16 @@ namespace PsychologyPatientSystem.Business.Concrete
            return new SuccessDataResult<List<User>>();
        }
 
-        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        public List<OperationClaim> GetClaims(User user)
         {
-            _userDal.OperationClaims(user);
-            return new SuccessDataResult<List<OperationClaim>>();
+           
+            return _userDal.OperationClaims(user);
         }
 
-        public IDataResult<User> GetByMail(string email)
+        public User GetByMail(string email)
         {
-            
-            return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email));
+
+            return _userDal.Get(u => u.Email == email);
         }
 
         public IResult Add(User user)

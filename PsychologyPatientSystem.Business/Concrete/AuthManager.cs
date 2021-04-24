@@ -42,7 +42,7 @@ namespace PsychologyPatientSystem.Business.Concrete
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
-            var userToCheck = _userService.GetByMail(userForLoginDto.Email).Data;
+            var userToCheck = _userService.GetByMail(userForLoginDto.Email);
             if (userToCheck == null)
             {
                 return new ErrorDataResult<User>(Messages.UserNotFound);
@@ -58,20 +58,25 @@ namespace PsychologyPatientSystem.Business.Concrete
 
         public IResult UserExits(string email)
         {
+            
+            //if (_userService.GetByMail(email)!=null)
+            //{
+            //    return new ErrorResult(Messages.UserAlreadyExits);
+            //}
 
-            if (_userService.GetByMail(email)!=null)
+            var result = _userService.GetByMail(email);
+            if (result!=null)
             {
-                return new ErrorResult("sdaasdf");
+                return new ErrorResult(Messages.UserAlreadyExits);
             }
-
             return new SuccessResult();
         }
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
             var claims = _userService.GetClaims(user);
-            var accessToken = _tokenHelper.CreateAccessToken(user, claims.Data);
-            return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
+            var accessToken = _tokenHelper.CreateAccessToken(user, claims);
+            return new SuccessDataResult<AccessToken>(accessToken, "Access token created");
         }
     }
 }
