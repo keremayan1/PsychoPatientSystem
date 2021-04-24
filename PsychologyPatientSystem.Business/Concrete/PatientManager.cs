@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PsychologyPatientSystem.Business.Abstract;
+using PsychologyPatientSystem.Business.BusinessAspects.Autofac;
 using PsychologyPatientSystem.Business.Constants;
 using PsychologyPatientSystem.Core.Utilities.Business;
 
@@ -26,7 +27,7 @@ namespace PsychologyPatientSystem.Business.Concrete
             _patientDal.GetAll();
             return new SuccessDataResult<List<Patient>>("");
         }
-
+        [SecuredOperation("getall,")]
         public IDataResult<List<Patient>> GetById(int id)
         {
             _patientDal.GetAll(p => p.Id == id);
