@@ -5,6 +5,7 @@ using System.Text;
 using PsychologyPatientSystem.Business.Abstract;
 using PsychologyPatientSystem.Business.BusinessAspects.Autofac;
 using PsychologyPatientSystem.Business.Constants;
+using PsychologyPatientSystem.Core.Aspects.Autofac.Caching;
 using PsychologyPatientSystem.Core.Utilities.Business;
 
 using PsychologyPatientSystem.Core.Utilities.Results;
@@ -22,18 +23,23 @@ namespace PsychologyPatientSystem.Business.Concrete
             _patientDal = patientDal;
         }
 
+
+
+       [SecuredOperation("admin")]
+        [CacheAspect(10)]
         public IDataResult<List<Patient>> GetAll()
         {
             _patientDal.GetAll();
-            return new SuccessDataResult<List<Patient>>("");
+            return new SuccessDataResult<List<Patient>>("123");
         }
-        [SecuredOperation("getall,admin")]
+        
         public IDataResult<List<Patient>> GetById(int id)
         {
             _patientDal.GetAll(p => p.Id == id);
             return new SuccessDataResult<List<Patient>>();
         }
-
+        [SecuredOperation("admin")]
+        [CacheRemoveAspect("IPatientService.Get")]
         public IResult Add(Patient patient)
         {
             var result = BusinessRules.Run(CheckIfPatientExits(patient.Name));

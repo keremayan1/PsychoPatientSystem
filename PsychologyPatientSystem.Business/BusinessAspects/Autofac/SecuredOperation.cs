@@ -25,15 +25,15 @@ namespace PsychologyPatientSystem.Business.BusinessAspects.Autofac
       public override void OnBefore(IInvocation invocation)
       {
           var claims = _httpContextAccessor.HttpContext.User.ClaimRoles();
-          foreach (var claim in claims)
+          foreach (var role in _roles)
           {
-              if (claims.Contains(claim))
+              if (claims.Contains(role))
               {
                   return;
               }
           }
 
-          throw new Exception("Hata");
+          throw new Exception("Yetkiniz Yok");
 
       }
   }

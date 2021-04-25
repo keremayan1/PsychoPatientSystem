@@ -8,9 +8,9 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace PsychologyPatientSystem.Core.CrossCuttingConcerns.Caching.Microsoft
 {
-  public  class MemoryCacheManager:ICacheManager
-  {
-      private IMemoryCache _memoryCache;
+    public class MemoryCacheManager : ICacheManager
+    {
+        private IMemoryCache _memoryCache;
         public T Get<T>(string key)
         {
             return _memoryCache.Get<T>(key);
@@ -28,7 +28,7 @@ namespace PsychologyPatientSystem.Core.CrossCuttingConcerns.Caching.Microsoft
 
         public void Remove(string key)
         {
-           _memoryCache.Remove(key);
+            _memoryCache.Remove(key);
         }
 
         public bool IsAdd(string key)
