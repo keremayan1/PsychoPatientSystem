@@ -7,29 +7,27 @@ namespace PsychologyPatientSystem.Core.Utilities.Security.Hashing
 {
   public   class HashingHelper
     {
-        public static void CreatePasswordHash(string password, out byte[] passwordSalt, out byte[] passwordHash)
+        public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512())
             {
                 passwordSalt = hmac.Key;
-                passwordHash = Encoding.UTF8.GetBytes(password);
+                passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
         }
-
-        public static bool VerifyPasswordHash(string password, byte[] passwordSalt, byte[] passwordHash)
+        public static bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512(passwordSalt))
             {
-                var computeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-                for (int i = 0; i < computeHash.Length; i++)
+                var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+                for (int i = 0; i < computedHash.Length; i++)
                 {
-                    if (computeHash[i]!=passwordHash[i])
+                    if (computedHash[i] != passwordHash[i])
                     {
                         return false;
                     }
                 }
             }
-
             return true;
         }
     }

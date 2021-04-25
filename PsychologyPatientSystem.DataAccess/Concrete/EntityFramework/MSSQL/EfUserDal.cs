@@ -5,12 +5,14 @@ using PsychologyPatientSystem.Core.Entities.Concrete;
 using PsychologyPatientSystem.DataAccess.Abstract;
 using PsychologyPatientSystem.DataAccess.Concrete.EntityFramework.MSSQL.Context;
 
+
 namespace PsychologyPatientSystem.DataAccess.Concrete.EntityFramework.MSSQL
 {
     public class EfUserDal:EfEntityRepository<User,PsychologyPatientSystemContext>,IUserDal
     {
         public List<OperationClaim> OperationClaims(User user)
         {
+          
             using (var context = new PsychologyPatientSystemContext())
             {
                 var result = from operationClaim in context.OperationClaims

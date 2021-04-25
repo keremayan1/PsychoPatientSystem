@@ -31,8 +31,9 @@ namespace PsychologyPatientSystem.Business.Concrete
                 Email = userForRegisterDto.Email,
                 FirstName = userForRegisterDto.FirstName,
                 LastName = userForRegisterDto.LastName,
-                PasswordHash = passwordHash,
+              
                 PasswordSalt = passwordSalt,
+                PasswordHash = passwordHash,
                 Status = true
             };
             _userService.Add(user);
@@ -47,21 +48,21 @@ namespace PsychologyPatientSystem.Business.Concrete
                 return new ErrorDataResult<User>(Messages.UserNotFound);
             }
 
-            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password,userToCheck.PasswordSalt,userToCheck.PasswordHash))
+            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
-              return new ErrorDataResult<User>(Messages.PasswordError);
+                return new ErrorDataResult<User>(Messages.PasswordError);
             }
 
-            return new SuccessDataResult<User>(userToCheck,Messages.SuccessfulLogin);
+            return new SuccessDataResult<User>(userToCheck);
         }
 
         public IResult UserExits(string email)
         {
-            
-            //if (_userService.GetByMail(email)!=null)
-            //{
-            //    return new ErrorResult(Messages.UserAlreadyExits);
-            //}
+
+            if (_userService.GetByMail(email) != null)
+            {
+                return new ErrorResult(Messages.UserAlreadyExits);
+            }
 
             var result = _userService.GetByMail(email);
             if (result!=null)
