@@ -27,7 +27,7 @@ namespace PsychologyPatientSystem.Business.Concrete
             _patientDal.GetAll();
             return new SuccessDataResult<List<Patient>>("");
         }
-        [SecuredOperation("getall,")]
+        [SecuredOperation("getall,admin")]
         public IDataResult<List<Patient>> GetById(int id)
         {
             _patientDal.GetAll(p => p.Id == id);

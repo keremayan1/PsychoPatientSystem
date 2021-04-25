@@ -33,7 +33,6 @@ namespace PsychologyPatientSystem.Business.Concrete
                 LastName = userForRegisterDto.LastName,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
-
                 Status = true
             };
             _userService.Add(user);
@@ -48,12 +47,12 @@ namespace PsychologyPatientSystem.Business.Concrete
                 return new ErrorDataResult<User>(Messages.UserNotFound);
             }
 
-            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordSalt, userToCheck.PasswordHash))
+            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password,userToCheck.PasswordSalt,userToCheck.PasswordHash))
             {
-                return new ErrorDataResult<User>(Messages.PasswordError);
+              return new ErrorDataResult<User>(Messages.PasswordError);
             }
 
-            return new SuccessDataResult<User>(userToCheck, Messages.SuccessfulLogin);
+            return new SuccessDataResult<User>(userToCheck,Messages.SuccessfulLogin);
         }
 
         public IResult UserExits(string email)
