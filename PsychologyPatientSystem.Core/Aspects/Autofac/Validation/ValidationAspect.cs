@@ -16,7 +16,7 @@ namespace PsychologyPatientSystem.Core.Aspects.Autofac.Validation
 
       public ValidationAspect(Type type)
       {
-          if (!typeof(IValidator).IsAssignableFrom(_type))
+          if (!typeof(IValidator).IsAssignableFrom(type))
           {
               throw new Exception("Wrong Valid Type");
           }

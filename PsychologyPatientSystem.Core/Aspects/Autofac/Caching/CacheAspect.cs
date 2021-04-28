@@ -15,7 +15,7 @@ namespace PsychologyPatientSystem.Core.Aspects.Autofac.Caching
         private int _duration;
         private ICacheManager _cacheManager;
 
-        public CacheAspect( int duration=60)
+        public CacheAspect(int duration = 60)
         {
             
            _duration = duration;
@@ -24,6 +24,7 @@ namespace PsychologyPatientSystem.Core.Aspects.Autofac.Caching
 
         public override void Intercept(IInvocation invocation)
         {
+            
             var methodName = string.Format($"{invocation.Method.ReflectedType.FullName}.{invocation.Method.Name}");
             var arguments = invocation.Arguments.ToList();
             var key = $"{methodName}({string.Join(",", arguments.Select(x => x?.ToString() ?? "<Null>"))})";

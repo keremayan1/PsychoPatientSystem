@@ -6,9 +6,11 @@ using System.Threading;
 using PsychologyPatientSystem.Business.Abstract;
 using PsychologyPatientSystem.Business.BusinessAspects.Autofac;
 using PsychologyPatientSystem.Business.Constants;
+using PsychologyPatientSystem.Business.ValidationRules.FluentValidation;
 using PsychologyPatientSystem.Core.Aspects.Autofac.Caching;
 using PsychologyPatientSystem.Core.Aspects.Autofac.Performance;
 using PsychologyPatientSystem.Core.Aspects.Autofac.Transaction;
+using PsychologyPatientSystem.Core.Aspects.Autofac.Validation;
 using PsychologyPatientSystem.Core.Utilities.Business;
 
 using PsychologyPatientSystem.Core.Utilities.Results;
@@ -28,9 +30,9 @@ namespace PsychologyPatientSystem.Business.Concrete
 
 
 
-       [SecuredOperation("admin")]
+       
         [CacheAspect]
-        [PerformanceScopeAspect(5)]
+        
         public IDataResult<List<Patient>> GetAll()
         {
             
@@ -43,12 +45,14 @@ namespace PsychologyPatientSystem.Business.Concrete
             _patientDal.GetAll(p => p.Id == id);
             return new SuccessDataResult<List<Patient>>();
         }
+        [PerformanceScopeAspect(5)]
         [SecuredOperation("admin")]
         [CacheRemoveAspect("IPatientService.Get")]
+        [ValidationAspect(typeof(PatientValidator))]
        
         public IResult Add(Patient patient)
         {
-            Thread.Sleep(5000);
+         //   Thread.Sleep(5000);
             var result = BusinessRules.Run(CheckIfPatientExits(patient.Name));
             if (result != null)
             {
@@ -57,7 +61,7 @@ namespace PsychologyPatientSystem.Business.Concrete
             _patientDal.Add(patient);
             return new SuccessResult("Kayıt Eklenmiştir");
         }
-
+        [ValidationAspect(typeof(PatientValidator))]
         public IResult Update(Patient patient)
         {
             _patientDal.Update(patient);
