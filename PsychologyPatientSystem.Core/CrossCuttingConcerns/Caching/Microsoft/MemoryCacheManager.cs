@@ -5,12 +5,20 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.DependencyInjection;
+using PsychologyPatientSystem.Core.Utilities.IoC;
 
 namespace PsychologyPatientSystem.Core.CrossCuttingConcerns.Caching.Microsoft
 {
     public class MemoryCacheManager : ICacheManager
     {
         private IMemoryCache _memoryCache;
+
+        public MemoryCacheManager()
+        {
+            _memoryCache = ServiceTool.ServiceProvider.GetService<IMemoryCache>();
+        }
+
         public T Get<T>(string key)
         {
             return _memoryCache.Get<T>(key);

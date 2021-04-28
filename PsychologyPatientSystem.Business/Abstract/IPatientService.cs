@@ -13,5 +13,6 @@ namespace PsychologyPatientSystem.Business.Abstract
         IResult Add(Patient patient);
         IResult Update(Patient patient);
         IResult Delete(Patient patient);
+        IResult TransactionOperation(Patient patient);
     }
 }

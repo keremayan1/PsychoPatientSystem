@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using PsychologyPatientSystem.Business.Abstract;
 using PsychologyPatientSystem.Business.BusinessAspects.Autofac;
 using PsychologyPatientSystem.Business.Constants;
 using PsychologyPatientSystem.Core.Aspects.Autofac.Caching;
+using PsychologyPatientSystem.Core.Aspects.Autofac.Performance;
+using PsychologyPatientSystem.Core.Aspects.Autofac.Transaction;
 using PsychologyPatientSystem.Core.Utilities.Business;
 
 using PsychologyPatientSystem.Core.Utilities.Results;
@@ -26,9 +29,11 @@ namespace PsychologyPatientSystem.Business.Concrete
 
 
        [SecuredOperation("admin")]
-        [CacheAspect(10)]
+        [CacheAspect]
+        [PerformanceScopeAspect(5)]
         public IDataResult<List<Patient>> GetAll()
         {
+            
             _patientDal.GetAll();
             return new SuccessDataResult<List<Patient>>("123");
         }
@@ -40,8 +45,10 @@ namespace PsychologyPatientSystem.Business.Concrete
         }
         [SecuredOperation("admin")]
         [CacheRemoveAspect("IPatientService.Get")]
+       
         public IResult Add(Patient patient)
         {
+            Thread.Sleep(5000);
             var result = BusinessRules.Run(CheckIfPatientExits(patient.Name));
             if (result != null)
             {
@@ -61,6 +68,13 @@ namespace PsychologyPatientSystem.Business.Concrete
         public IResult Delete(Patient patient)
         {
             _patientDal.Delete(patient);
+            return new SuccessResult();
+        }
+        [TransactionScopeAspect]
+        public IResult TransactionOperation(Patient patient)
+        {
+            _patientDal.Update(patient);
+            _patientDal.Add(patient);
             return new SuccessResult();
         }
 
