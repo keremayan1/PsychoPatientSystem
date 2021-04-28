@@ -9,7 +9,7 @@ namespace PsychologyPatientSystem.DataAccess.Concrete.EntityFramework.MSSQL.Cont
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
           //  optionsBuilder.EnableSensitiveDataLogging();
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PsicoClient;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PsicoPatient;Trusted_Connection=true");
             
         }
 
