@@ -25,7 +25,7 @@ namespace PsychologyPatientSystem.Business.Concrete
         public List<OperationClaim> GetClaims(User user)
         {
            
-            return _userDal.OperationClaims(user);
+              return _userDal.OperationClaims(user);
         }
 
         public User GetByMail(string email)
