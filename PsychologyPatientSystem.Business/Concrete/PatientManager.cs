@@ -31,20 +31,18 @@ namespace PsychologyPatientSystem.Business.Concrete
 
 
        
-      //  [CacheAspect]
+       [CacheAspect]
         public IDataResult<List<Patient>> GetAll()
         {
-            _patientDal.GetAll();
-            return new SuccessDataResult<List<Patient>>();
+            return new SuccessDataResult<List<Patient>>( _patientDal.GetAll(),"12345");
         }
         
         public IDataResult<List<Patient>> GetById(int id)
         {
-            _patientDal.GetAll(p => p.Id == id);
-            return new SuccessDataResult<List<Patient>>();
+            return new SuccessDataResult<List<Patient>>(_patientDal.GetAll(p => p.Id == id));
         }
         [PerformanceScopeAspect(5)]
-      //  [SecuredOperation("admin")]
+      [SecuredOperation("admin,user")]
         [CacheRemoveAspect("IPatientService.Get")]
         [ValidationAspect(typeof(PatientValidator))]
        

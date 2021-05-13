@@ -11,7 +11,7 @@ namespace PsychologyPatientSystem.Core.DataAccess.EntityFramework
   public  class EfEntityRepository<TEntity,TContext>:IEntityRepository<TEntity> where TEntity:class,IEntity,new()
   where TContext:DbContext,new()
     {
-        public IList<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var context = new TContext())
             {
