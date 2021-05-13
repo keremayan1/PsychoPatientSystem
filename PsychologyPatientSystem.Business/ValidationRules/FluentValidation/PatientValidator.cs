@@ -13,7 +13,7 @@ namespace PsychologyPatientSystem.Business.ValidationRules.FluentValidation
             RuleFor(p => p.Name).NotEmpty();
             RuleFor(p => p.Name).MinimumLength(2);
             RuleFor(p => p.Name).MaximumLength(64);
-            RuleFor(p => p.Age).GreaterThan(0);
+           // RuleFor(p => p.Age).GreaterThan(0);
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
 using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
@@ -10,7 +7,6 @@ using PsychologyPatientSystem.Business.Concrete;
 using PsychologyPatientSystem.Core.Utilities.Interceptors;
 using PsychologyPatientSystem.Core.Utilities.Security.Jwt;
 using PsychologyPatientSystem.DataAccess.Abstract;
-using PsychologyPatientSystem.DataAccess.Concrete.EntityFramework;
 using PsychologyPatientSystem.DataAccess.Concrete.EntityFramework.MSSQL;
 using Module = Autofac.Module;
 
