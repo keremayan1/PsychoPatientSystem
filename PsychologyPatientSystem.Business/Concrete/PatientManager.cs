@@ -30,16 +30,16 @@ namespace PsychologyPatientSystem.Business.Concrete
 
 
 
-       
-       [CacheAspect]
+        [SecuredOperation("admin,user")]
+        [CacheAspect]
         public IDataResult<List<Patient>> GetAll()
         {
-            return new SuccessDataResult<List<Patient>>( _patientDal.GetAll(),"12345");
+            return new SuccessDataResult<List<Patient>>( _patientDal.GetAll(),Messages.PatientsGetAll);
         }
         
         public IDataResult<List<Patient>> GetById(int id)
         {
-            return new SuccessDataResult<List<Patient>>(_patientDal.GetAll(p => p.Id == id));
+            return new SuccessDataResult<List<Patient>>(_patientDal.GetAll(p => p.Id == id),Messages.PatientsGetById);
         }
         [PerformanceScopeAspect(5)]
       [SecuredOperation("admin,user")]
@@ -55,20 +55,25 @@ namespace PsychologyPatientSystem.Business.Concrete
                 return result;
             }
             _patientDal.Add(patient);
-            return new SuccessResult("Kayıt Eklenmiştir");
+            return new SuccessResult(Messages.AddedPatients);
         }
         [ValidationAspect(typeof(PatientValidator))]
         public IResult Update(Patient patient)
         {
+            var result = BusinessRules.Run(CheckIfPatientExits(patient.Name));
+            if (result!=null)
+            {
+                return result;
+            }
             _patientDal.Update(patient);
-            return new SuccessResult();
+            return new SuccessResult(Messages.UpdatedPatients);
 
         }
 
         public IResult Delete(Patient patient)
         {
             _patientDal.Delete(patient);
-            return new SuccessResult();
+            return new SuccessResult(Messages.DeletedPatients);
         }
         [TransactionScopeAspect]
         public IResult TransactionOperation(Patient patient)
@@ -83,7 +88,7 @@ namespace PsychologyPatientSystem.Business.Concrete
             var result = _patientDal.GetAll(p => p.Name == name).Any();
             if (result)
             {
-                return new ErrorResult(Messages.hastaaynıolamaz);
+                return new ErrorResult(Messages.PatientsAlreadyExits);
             }
 
             return new SuccessResult();

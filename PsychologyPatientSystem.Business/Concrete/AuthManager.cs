@@ -59,10 +59,10 @@ namespace PsychologyPatientSystem.Business.Concrete
         public IResult UserExits(string email)
         {
 
-            if (_userService.GetByMail(email) != null)
-            {
-                return new ErrorResult(Messages.UserAlreadyExits);
-            }
+            //if (_userService.GetByMail(email) != null)
+            //{
+            //    return new ErrorResult(Messages.UserAlreadyExits);
+            //}
 
             var result = _userService.GetByMail(email);
             if (result!=null)
@@ -76,7 +76,7 @@ namespace PsychologyPatientSystem.Business.Concrete
         {
             var claims = _userService.GetClaims(user);
             var accessToken = _tokenHelper.CreateAccessToken(user, claims);
-            return new SuccessDataResult<AccessToken>(accessToken, "Access token created");
+            return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
     }
 }

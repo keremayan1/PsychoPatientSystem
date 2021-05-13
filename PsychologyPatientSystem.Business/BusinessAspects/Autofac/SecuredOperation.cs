@@ -6,6 +6,7 @@ using PsychologyPatientSystem.Core.Utilities.Interceptors;
 using System.Linq;
 using Castle.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
+using PsychologyPatientSystem.Business.Constants;
 using PsychologyPatientSystem.Core.Extensions;
 using PsychologyPatientSystem.Core.Utilities.IoC;
 
@@ -33,7 +34,7 @@ namespace PsychologyPatientSystem.Business.BusinessAspects.Autofac
               }
           }
 
-          throw new Exception("Yetkiniz Yok");
+          throw new Exception(Messages.NotAccessRoles);
 
       }
   }
