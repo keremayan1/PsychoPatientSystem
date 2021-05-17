@@ -12,7 +12,7 @@ namespace PsychologyPatientSystem.Core.CrossCuttingConcerns.Logging.Log4Net.Layo
     {
         public override void ActivateOptions()
         {
-            throw new NotImplementedException();
+          
         }
 
         public override void Format(TextWriter writer, LoggingEvent loggingEvent)
