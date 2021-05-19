@@ -14,7 +14,6 @@ using PsychologyPatientSystem.Core.Aspects.Autofac.Transaction;
 using PsychologyPatientSystem.Core.Aspects.Autofac.Validation;
 using PsychologyPatientSystem.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using PsychologyPatientSystem.Core.Utilities.Business;
-
 using PsychologyPatientSystem.Core.Utilities.Results;
 using PsychologyPatientSystem.DataAccess.Abstract;
 using PsychologyPatientSystem.Entities.Concrete;
@@ -29,9 +28,6 @@ namespace PsychologyPatientSystem.Business.Concrete
         {
             _patientDal = patientDal;
         }
-
-
-
         [SecuredOperation("admin,user")]
         [CacheAspect]
         public IDataResult<List<Patient>> GetAll()
@@ -44,7 +40,7 @@ namespace PsychologyPatientSystem.Business.Concrete
             return new SuccessDataResult<List<Patient>>(_patientDal.GetAll(p => p.Id == id),Messages.PatientsGetById);
         }
         [PerformanceScopeAspect(5)]
-      [SecuredOperation("admin,user")]
+     // [SecuredOperation("admin,user")]
         [CacheRemoveAspect("IPatientService.Get")]
         [LogAspect(typeof(FileLogger))]
         [ValidationAspect(typeof(PatientValidator))]

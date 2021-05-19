@@ -15,7 +15,12 @@ namespace PsychologyPatientSystem.Core.Aspects.Autofac.Logging
 
        public LogAspect(Type loggerService)
        {
-           if (loggerService.BaseType!=typeof(LoggerServiceBase))
+           //if (loggerService.BaseType!=typeof(LoggerServiceBase))
+           //{
+           //    throw new Exception("Hatalı Logger Servisi");
+           //}
+
+           if (!typeof(LoggerServiceBase).IsAssignableFrom(loggerService))
            {
                throw new Exception("Hatalı Logger Servisi");
            }
