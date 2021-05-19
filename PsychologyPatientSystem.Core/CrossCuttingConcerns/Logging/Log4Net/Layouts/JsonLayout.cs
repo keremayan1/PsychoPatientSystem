@@ -18,7 +18,7 @@ namespace PsychologyPatientSystem.Core.CrossCuttingConcerns.Logging.Log4Net.Layo
         public override void Format(TextWriter writer, LoggingEvent loggingEvent)
         {
             var logEvent = new SerializibleLogEvent(loggingEvent);
-            var json = JsonConvert.SerializeObject(loggingEvent, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(logEvent, Formatting.Indented);
             writer.WriteLine(json);
         }
     }
