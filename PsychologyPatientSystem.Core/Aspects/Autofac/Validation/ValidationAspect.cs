@@ -18,7 +18,7 @@ namespace PsychologyPatientSystem.Core.Aspects.Autofac.Validation
       {
           if (!typeof(IValidator).IsAssignableFrom(type))
           {
-              throw new Exception("Wrong Valid Type");
+              throw new System.Exception("Wrong Valid Type");
           }
           _type = type;
       }

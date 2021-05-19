@@ -34,7 +34,7 @@ namespace PsychologyPatientSystem.Business.Concrete
         {
             return new SuccessDataResult<List<Patient>>( _patientDal.GetAll(),Messages.PatientsGetAll);
         }
-        [LogAspect(typeof(FileLogger))]
+       
         public IDataResult<List<Patient>> GetById(int id)
         {
             return new SuccessDataResult<List<Patient>>(_patientDal.GetAll(p => p.Id == id),Messages.PatientsGetById);
@@ -42,7 +42,7 @@ namespace PsychologyPatientSystem.Business.Concrete
         [PerformanceScopeAspect(5)]
      // [SecuredOperation("admin,user")]
         [CacheRemoveAspect("IPatientService.Get")]
-        [LogAspect(typeof(FileLogger))]
+     
         [ValidationAspect(typeof(PatientValidator))]
 
        

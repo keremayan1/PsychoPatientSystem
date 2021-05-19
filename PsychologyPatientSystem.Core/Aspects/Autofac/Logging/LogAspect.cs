@@ -22,7 +22,7 @@ namespace PsychologyPatientSystem.Core.Aspects.Autofac.Logging
 
            if (!typeof(LoggerServiceBase).IsAssignableFrom(loggerService))
            {
-               throw new Exception("Hatalı Logger Servisi");
+               throw new System.Exception("Hatalı Logger Servisi");
            }
 
            _loggerServiceBase = (LoggerServiceBase) Activator.CreateInstance(loggerService);

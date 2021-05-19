@@ -64,6 +64,7 @@ namespace PsychologyPatientSystem.WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.ConfigrueCustomExceptionMiddleWare();
             app.UseCors(builder => builder.WithOrigins().AllowAnyHeader());
             app.UseHttpsRedirection();
 
