@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,10 +32,15 @@ namespace PsychologyPatientSystem.Core.Extensions
         {
             httpContext.Response.ContentType = "application/json";
             httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            string message = "Internal Server Error";
+            if (e.GetType()==typeof(ValidationException))
+            {
+                message = e.Message;
+            }
             return httpContext.Response.WriteAsync(new ErrorDetail
             {
                 StatusCode = httpContext.Response.StatusCode,
-                Message = "Internal Server Error"
+                Message = message
             }.ToString());
         }
     }
