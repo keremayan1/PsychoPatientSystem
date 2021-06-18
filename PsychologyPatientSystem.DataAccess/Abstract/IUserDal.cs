@@ -6,7 +6,7 @@ using PsychologyPatientSystem.Core.Entities.Concrete;
 
 namespace PsychologyPatientSystem.DataAccess.Abstract
 {
-   public interface IUserDal:IEntityRepository<User>
+   public interface IUserDal:IEntityRepository<User>,IAsyncEntityRepository<User>
    {
        List<OperationClaim> OperationClaims(User user);
    }

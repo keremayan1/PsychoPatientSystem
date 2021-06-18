@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using PsychologyPatientSystem.Core.Utilities.Results;
 using PsychologyPatientSystem.Entities.Concrete;
 
@@ -14,5 +15,7 @@ namespace PsychologyPatientSystem.Business.Abstract
         IResult Update(Patient patient);
         IResult Delete(Patient patient);
         IResult TransactionOperation(Patient patient);
+        Task<IResult> AddAsync(Patient patient);
+
     }
 }

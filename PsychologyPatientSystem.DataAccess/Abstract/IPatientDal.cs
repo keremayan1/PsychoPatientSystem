@@ -6,7 +6,7 @@ using PsychologyPatientSystem.Entities.Concrete;
 
 namespace PsychologyPatientSystem.DataAccess.Abstract
 {
-   public interface IPatientDal:IEntityRepository<Patient>
+   public interface IPatientDal:IEntityRepository<Patient>,IAsyncEntityRepository<Patient>
     {
     }
 }

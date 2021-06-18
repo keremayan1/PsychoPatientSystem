@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using PsychologyPatientSystem.Business.Abstract;
 using PsychologyPatientSystem.Business.BusinessAspects.Autofac;
 using PsychologyPatientSystem.Business.Constants;
@@ -80,6 +81,12 @@ namespace PsychologyPatientSystem.Business.Concrete
         {
             _patientDal.Update(patient);
             _patientDal.Add(patient);
+            return new SuccessResult();
+        }
+
+        public async Task<IResult> AddAsync(Patient patient)
+        {
+            await _patientDal.AddAsync(patient);
             return new SuccessResult();
         }
 
